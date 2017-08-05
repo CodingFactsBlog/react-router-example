@@ -16,7 +16,15 @@ export default class MainComponent extends React.Component {
           <li>
             <Link to="/random/character">Random letter</Link>
           </li>
+          <li>
+            <Link to="/echo/This_is_an_example_text">Echo</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
         </ul>
+        <hr />
+
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ValueLabel from './ValueLabel.jsx';
+import { HomeLink } from '../SingleComponents.jsx';
 
 export default class RandomCharacterGenerator extends React.Component {
   constructor(props) {
@@ -21,9 +21,7 @@ export default class RandomCharacterGenerator extends React.Component {
         <p>Generates a letter.</p>
         <ValueLabel value={this.state.character} />
         <button onClick={this.generateRandom}>Generate new value</button>
-        <p>
-          <Link to="/">Back</Link>
-        </p>
+        <HomeLink />
       </div>
     );
   }
