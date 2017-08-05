@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ValueLabel from './ValueLabel.jsx';
 
 export default class RandomDoubleGenerator extends React.Component {
@@ -14,11 +15,14 @@ export default class RandomDoubleGenerator extends React.Component {
 
   render() {
     return (
-      <div style={{ padding: '0.5em' }}>
+      <div>
         <h1>Random double</h1>
         <p>Generates a decimal number between 0 and 1.</p>
         <ValueLabel value={this.state.number} />
         <button onClick={this.generateRandom}>Generate new value</button>
+        <p>
+          <Link to="/">Back</Link>
+        </p>
       </div>
     );
   }
