@@ -1,14 +1,16 @@
 import React from 'react';
-import RandomGenerator from './RandomGenerator.jsx';
+import RandomDoubleGenerator from './RandomGenerators/RandomDoubleGenerator.jsx';
+import RandomIntegerGenerator from './RandomGenerators/RandomIntegerGenerator.jsx';
+import RandomCharacterGenerator from './RandomGenerators/RandomCharacterGenerator.jsx';
 
 export default class MainComponent extends React.Component {
   render() {
     return (
       <div>
         <h1>Random Generator</h1>
-        <RandomGenerator />
-        <RandomGenerator />
-        <RandomGenerator />
+        <RandomDoubleGenerator />
+        <RandomIntegerGenerator />
+        <RandomCharacterGenerator />
       </div>
     );
   }

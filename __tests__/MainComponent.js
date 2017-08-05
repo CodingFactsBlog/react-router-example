@@ -26,11 +26,13 @@ describe("MainComponent", () => {
     expect(divs.length).toBeGreaterThan(0);
   });
 
-  it("Has 4 children, an h1 and 3 RandomGenerator", () => {
+  it("Has 4 children, an h1 and 3 RandomGenerators", () => {
     const children = mainComponent().find("div").first().children();
     expect(children.length).toBe(4);
-    expect(children.find("h1").length).toBe(1);
-    expect(children.find("RandomGenerator").length).toBe(3);
+    expect(children.find("h1").length).toBeGreaterThan(1);
+    expect(children.find("RandomDoubleGenerator").length).toBe(1);
+    expect(children.find("RandomIntegerGenerator").length).toBe(1);
+    expect(children.find("RandomCharacterGenerator").length).toBe(1);
   });
 
   it ("Has an h1 with text 'Random Generator'", () => {

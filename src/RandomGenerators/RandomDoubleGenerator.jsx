@@ -1,7 +1,7 @@
 import React from 'react';
-import NumberLabel from './NumberLabel.jsx';
+import ValueLabel from './ValueLabel.jsx';
 
-export default class RandomGenerator extends React.Component {
+export default class RandomDoubleGenerator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,8 +14,10 @@ export default class RandomGenerator extends React.Component {
 
   render() {
     return (
-      <div style={{ border: '1px solid black', padding: '0.5em', marginBottom: '1em' }}>
-        <NumberLabel number={this.state.number} />
+      <div style={{ padding: '0.5em' }}>
+        <h1>Random double</h1>
+        <p>Generates a decimal number between 0 and 1.</p>
+        <ValueLabel value={this.state.number} />
         <button onClick={this.generateRandom}>Generate new value</button>
       </div>
     );
