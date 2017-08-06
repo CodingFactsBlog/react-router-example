@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { MountOptions } from '../test-utils/MountOptions.jsx';
-import ValueLabel from "../src/RandomGenerators/ValueLabel.jsx";
+import ValueLabel from "../src/ValueLabel.jsx";
 
 describe("ValueLabel", () => {
   let props;

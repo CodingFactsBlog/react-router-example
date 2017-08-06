@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { MountOptions } from '../test-utils/MountOptions.jsx';
-import RandomDoubleGenerator from "../src/RandomGenerators/RandomDoubleGenerator.jsx";
+import RandomGenerator from "../src/RandomGenerator.jsx";
 
 expect.extend({
   toBeInRange(value, rangeMin, rangeMax) {
@@ -19,45 +19,45 @@ expect.extend({
   }
 });
 
-describe("RandomDoubleGenerator", () => {
+describe("Random Double Generator", () => {
   let props;
-  let mountedRandomDoubleGenerator;
-  const randomDoubleGenerator = () => {
-    if (!mountedRandomDoubleGenerator) {
-      mountedRandomDoubleGenerator = mount(
-        <RandomDoubleGenerator {...props} />,
+  let mountedRandomGenerator;
+  const randomGenerator = () => {
+    if (!mountedRandomGenerator) {
+      mountedRandomGenerator = mount(
+        <RandomGenerator {...props} />,
         MountOptions,
       );
     }
-    return mountedRandomDoubleGenerator;
+    return mountedRandomGenerator;
   }
 
   beforeEach(() => {
-    props = {};
-    mountedRandomDoubleGenerator = undefined;
+    props = { match: { params: {type: 'double' } } };
+    mountedRandomGenerator = undefined;
   });
 
   it("It always renders a div", () => {
-    const divs = randomDoubleGenerator().find("div");
+    const divs = randomGenerator().find("div");
     expect(divs.length).toBeGreaterThan(0);
   });
 
   it("Has a h1, a p, a NumberLabel, a button and a HomeLink as children", () => {
-    expect(randomDoubleGenerator().find("div").first().children().length).toBe(5);
-    expect(randomDoubleGenerator().find("h1").length).toBe(1);
-    expect(randomDoubleGenerator().find("p").length).toBeGreaterThan(1);
-    expect(randomDoubleGenerator().find("ValueLabel").length).toBe(1);
-    expect(randomDoubleGenerator().find("button").length).toBe(1);
-    expect(randomDoubleGenerator().find("HomeLink").length).toBe(1);
+    expect(randomGenerator().find("div").first().children().length).toBe(5);
+    expect(randomGenerator().find("h1").length).toBe(1);
+    expect(randomGenerator().find("p").length).toBeGreaterThan(1);
+    expect(randomGenerator().find("ValueLabel").length).toBe(1);
+    expect(randomGenerator().find("button").length).toBe(1);
+    expect(randomGenerator().find("HomeLink").length).toBe(1);
   });
 
   it("Initial state is empty", () => {
-    expect(randomDoubleGenerator().state()).toEqual({});
+    expect(randomGenerator().state()).toEqual({});
   });
 
   it("Clicking the button changes the state", () => {
-    randomDoubleGenerator().find('button').simulate('click');
-    expect(Object.keys(randomDoubleGenerator().state()).length).toBe(1);
-    expect(randomDoubleGenerator().state("number")).toBeInRange(0, 1);
+    randomGenerator().find('button').simulate('click');
+    expect(Object.keys(randomGenerator().state()).length).toBe(1);
+    expect(randomGenerator().state("value")).toBeInRange(0, 1);
   });
 });
