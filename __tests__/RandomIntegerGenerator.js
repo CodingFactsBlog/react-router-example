@@ -1,5 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
+import { MountOptions } from '../test-utils/MountOptions.jsx';
 import RandomIntegerGenerator from "../src/RandomGenerators/RandomIntegerGenerator.jsx";
 
 expect.extend({
@@ -24,7 +25,8 @@ describe("RandomIntegerGenerator", () => {
   const randomIntegerGenerator = () => {
     if (!mountedRandomIntegerGenerator) {
       mountedRandomIntegerGenerator = mount(
-        <RandomIntegerGenerator {...props} />
+        <RandomIntegerGenerator {...props} />,
+        MountOptions,
       );
     }
     return mountedRandomIntegerGenerator;
@@ -40,12 +42,13 @@ describe("RandomIntegerGenerator", () => {
     expect(divs.length).toBeGreaterThan(0);
   });
 
-  it("Has a h1, a p, a NumberLabel and a button as children", () => {
-    expect(randomIntegerGenerator().find("div").first().children().length).toBe(4);
+  it("Has a h1, a p, a NumberLabel, a button and a HomeLink as children", () => {
+    expect(randomIntegerGenerator().find("div").first().children().length).toBe(5);
     expect(randomIntegerGenerator().find("h1").length).toBe(1);
     expect(randomIntegerGenerator().find("p").length).toBeGreaterThan(1);
     expect(randomIntegerGenerator().find("ValueLabel").length).toBe(1);
     expect(randomIntegerGenerator().find("button").length).toBe(1);
+    expect(randomIntegerGenerator().find("HomeLink").length).toBe(1);
   });
 
   it("Initial state is empty", () => {

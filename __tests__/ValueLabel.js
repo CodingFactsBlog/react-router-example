@@ -1,5 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
+import { MountOptions } from '../test-utils/MountOptions.jsx';
 import ValueLabel from "../src/RandomGenerators/ValueLabel.jsx";
 
 describe("ValueLabel", () => {
@@ -8,7 +9,8 @@ describe("ValueLabel", () => {
   const valueLabel = () => {
     if (!mountedValueLabel) {
       mountedValueLabel = mount(
-        <ValueLabel {...props} />
+        <ValueLabel {...props} />,
+        MountOptions,
       );
     }
     return mountedValueLabel;

@@ -1,5 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
+import { MountOptions } from '../test-utils/MountOptions.jsx';
 import MainComponent from "../src/MainComponent.jsx";
 
 describe("MainComponent", () => {
@@ -8,7 +9,8 @@ describe("MainComponent", () => {
   const mainComponent = () => {
     if (!mountedMainComponent) {
       mountedMainComponent = mount(
-        <MainComponent {...props} />
+        <MainComponent {...props} />,
+        MountOptions,
       );
     }
     return mountedMainComponent;
@@ -23,16 +25,14 @@ describe("MainComponent", () => {
 
   it("Always renders a div", () => {
     const divs = mainComponent().find("div");
-    expect(divs.length).toBeGreaterThan(0);
+    expect(divs.length).toBe(1);
   });
 
-  it("Has 4 children, an h1 and 3 RandomGenerators", () => {
+  it("Has 2 children, an h1 and one ul ", () => {
     const children = mainComponent().find("div").first().children();
-    expect(children.length).toBe(4);
-    expect(children.find("h1").length).toBeGreaterThan(1);
-    expect(children.find("RandomDoubleGenerator").length).toBe(1);
-    expect(children.find("RandomIntegerGenerator").length).toBe(1);
-    expect(children.find("RandomCharacterGenerator").length).toBe(1);
+    expect(children.length).toBe(2);
+    expect(children.find("h1").length).toBe(1);
+    expect(children.find("ul").length).toBe(1);
   });
 
   it ("Has an h1 with text 'Random Generator'", () => {

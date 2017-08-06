@@ -1,5 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
+import { MountOptions } from '../test-utils/MountOptions.jsx';
 import RandomCharacterGenerator from "../src/RandomGenerators/RandomCharacterGenerator.jsx";
 
 describe("RandomCharacterGenerator", () => {
@@ -8,7 +9,8 @@ describe("RandomCharacterGenerator", () => {
   const randomCharacterGenerator = () => {
     if (!mountedRandomCharacterGenerator) {
       mountedRandomCharacterGenerator = mount(
-        <RandomCharacterGenerator {...props} />
+        <RandomCharacterGenerator {...props} />,
+        MountOptions,
       );
     }
     return mountedRandomCharacterGenerator;
@@ -24,12 +26,13 @@ describe("RandomCharacterGenerator", () => {
     expect(divs.length).toBeGreaterThan(0);
   });
 
-  it("Has a h1, a p, a NumberLabel and a button as children", () => {
-    expect(randomCharacterGenerator().find("div").first().children().length).toBe(4);
+  it("Has a h1, a p, a NumberLabel, a button and a HomeLink as children", () => {
+    expect(randomCharacterGenerator().find("div").first().children().length).toBe(5);
     expect(randomCharacterGenerator().find("h1").length).toBe(1);
     expect(randomCharacterGenerator().find("p").length).toBeGreaterThan(1);
     expect(randomCharacterGenerator().find("ValueLabel").length).toBe(1);
     expect(randomCharacterGenerator().find("button").length).toBe(1);
+    expect(randomCharacterGenerator().find("HomeLink").length).toBe(1);
   });
 
   it("Initial state is empty", () => {

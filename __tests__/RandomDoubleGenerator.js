@@ -1,5 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
+import { MountOptions } from '../test-utils/MountOptions.jsx';
 import RandomDoubleGenerator from "../src/RandomGenerators/RandomDoubleGenerator.jsx";
 
 expect.extend({
@@ -24,7 +25,8 @@ describe("RandomDoubleGenerator", () => {
   const randomDoubleGenerator = () => {
     if (!mountedRandomDoubleGenerator) {
       mountedRandomDoubleGenerator = mount(
-        <RandomDoubleGenerator {...props} />
+        <RandomDoubleGenerator {...props} />,
+        MountOptions,
       );
     }
     return mountedRandomDoubleGenerator;
@@ -40,12 +42,13 @@ describe("RandomDoubleGenerator", () => {
     expect(divs.length).toBeGreaterThan(0);
   });
 
-  it("Has a h1, a p, a NumberLabel and a button as children", () => {
-    expect(randomDoubleGenerator().find("div").first().children().length).toBe(4);
+  it("Has a h1, a p, a NumberLabel, a button and a HomeLink as children", () => {
+    expect(randomDoubleGenerator().find("div").first().children().length).toBe(5);
     expect(randomDoubleGenerator().find("h1").length).toBe(1);
     expect(randomDoubleGenerator().find("p").length).toBeGreaterThan(1);
     expect(randomDoubleGenerator().find("ValueLabel").length).toBe(1);
     expect(randomDoubleGenerator().find("button").length).toBe(1);
+    expect(randomDoubleGenerator().find("HomeLink").length).toBe(1);
   });
 
   it("Initial state is empty", () => {

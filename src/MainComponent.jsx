@@ -23,8 +23,6 @@ export default class MainComponent extends React.Component {
             <Link to="/about">About</Link>
           </li>
         </ul>
-        <hr />
-
       </div>
     );
   }
