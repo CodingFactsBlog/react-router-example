@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 export const HomeLink = () => <p><Link to="/">Back</Link></p>;
 
+export const NotFound = () => <div><h1>Not found</h1><HomeLink /></div>;
+
 export const AboutComponent = () => (
   <div>
     <h1>About</h1>
